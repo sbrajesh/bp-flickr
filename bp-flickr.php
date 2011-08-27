@@ -2,14 +2,14 @@
 /*
  * Plugin Name: BP-Flickr
  * Author: Brajesh Singh
- * Plugin URI:http://buddydev.com
+ * Plugin URI:http://buddydev.com/plugins/bp-flickr/
  * Author URI:http://buddydev.com/members/sbrajesh
  * Description: allow users to show their latest flickr images on their profile
- * Version: 1.1
+ * Version: 1.1.1
  * Tested with wpmu 2.9.2+buddypress 1.2.5
  * License: GPL
- last Update: July 2nd, 2010
- * Date: May 22th, 2010
+ * last Update: August 26, 2011
+ * 
  */
 
 define("BP_FLICKR_PLUGIN_NAME","bp-flickr");
@@ -99,7 +99,7 @@ if($bp->current_component==$bp->flickr->slug&&$bp->current_action=="settings"){
         if(empty($_POST['flickr_account']))
             bp_core_add_message(__("You must enter your flickr account in order to display photos here.",'bp-flickr'),'error');
         else{
-            update_usermeta($bp->loggedin_user->id, "flickr_account", $_POST["flickr_account"]);
+            update_user_meta($bp->loggedin_user->id, "flickr_account", $_POST["flickr_account"]);
        
             bp_core_add_message(__("Account updated.",'bp-flickr'));
         }
@@ -115,7 +115,7 @@ function bp_flickr_get_user_account($user_id=null){
     global $bp;
     if(empty($user_id))
         $user_id=$bp->displayed_user->id;
-    return get_usermeta($user_id,"flickr_account");
+    return get_user_meta($user_id,"flickr_account",true);
 }
 
 
