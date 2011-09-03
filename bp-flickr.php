@@ -67,7 +67,7 @@ function bp_flickr_setup_nav(){
 
     /* Add the subnav items to the gallery nav item */
     bp_core_new_subnav_item( array( 'name' => __( 'My Flickr', 'bp-flickr' ), 'slug' => 'my-flickr', 'parent_url' => $flickr_link, 'parent_slug' => $bp->flickr->slug, 'screen_function' => 'bp_flickr_screen_home', 'position' => 10, 'item_css_id' => 'flickr-my-flickr' ) );
-    bp_core_new_subnav_item( array( 'name' => __( 'Settings', 'bp-flickr' ), 'slug' => 'settings', 'parent_url' => $flickr_link, 'parent_slug' => $bp->flickr->slug, 'screen_function' => 'bp_flickr_screen_settings_user', 'position' => 20, 'user_has_access' => bp_is_home() ) );
+    bp_core_new_subnav_item( array( 'name' => __( 'Settings', 'bp-flickr' ), 'slug' => 'settings', 'parent_url' => $flickr_link, 'parent_slug' => $bp->flickr->slug, 'screen_function' => 'bp_flickr_screen_settings_user', 'position' => 20, 'user_has_access' => bp_is_my_profile() ) );
    
      do_action( 'flickr_setup_nav');
     
