@@ -5,10 +5,10 @@
  * Plugin URI:http://buddydev.com/plugins/bp-flickr/
  * Author URI:http://buddydev.com/members/sbrajesh
  * Description: allow users to show their latest flickr images on their profile
- * Version: 1.1.1
- * Tested with wpmu 2.9.2+buddypress 1.2.5
+ * Version: 1.1.2
+ * Tested with WordPress 3.2.1+buddypress 1.5 beta3
  * License: GPL
- * last Update: August 26, 2011
+ * last Update:September 3, 2011
  * 
  */
 
