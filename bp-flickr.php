@@ -56,7 +56,7 @@ add_action("bp_init","bp_flickr_setup_globals",6);
 
 function bp_flickr_setup_nav(){
  global $bp;
- if($bp->current_component==$bp->flickr->slug){
+ if(bp_is_current_component($bp->flickr->slug)){
  //get the displayed user info
  
 
@@ -78,7 +78,7 @@ function bp_flickr_screen_home(){
     //catch the home screen of bp-flickr
     global $bp;
     do_action( 'bp_flickr_screen_home' );
-    if($bp->current_component==$bp->flickr->slug){
+    if(bp_is_current_component($bp->flickr->slug)){
         $bp->flickr->is_home=true;
     }
     if($bp->current_action=="my-flickr")
@@ -90,7 +90,7 @@ function bp_flickr_screen_home(){
 //for settings screen
 function bp_flickr_screen_settings_user(){
 global $bp;
-if($bp->current_component==$bp->flickr->slug&&$bp->current_action=="settings"){
+if(bp_is_current_component($bp->flickr->slug)&&$bp->current_action=="settings"){
 
     //settings screen
     if(!empty($_POST['save_settings'])){

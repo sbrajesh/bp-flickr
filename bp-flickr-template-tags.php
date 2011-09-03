@@ -54,9 +54,9 @@ class BP_Flickr_Template{
                     $this->photos_count = count($this->photos);
 
              //handle pseudo pagination in the feed
-                
+                $search_term=isset($_REQUEST['s'])?$_REQUEST['s']:'';
                 $this->pag_links = paginate_links( array(
-                                'base' => add_query_arg( array( 'frpage' => '%#%', 'num' => $this->pag_num, 's' => $_REQUEST['s'] ) ),
+                                'base' => add_query_arg( array( 'frpage' => '%#%', 'num' => $this->pag_num, 's' => $search_term ) ),
                                 'format' => '',
                                 'total' => ceil($this->total_photo_count / $this->pag_num),
                                 'current' => $this->pag_page,
@@ -341,14 +341,14 @@ function bp_flickr_get_photo_data($key){
 
 function bp_flickr_is_home(){
     global $bp;
-    if($bp->current_component==$bp->flickr->slug&&$bp->current_action=="my-flickr")
+    if(bp_is_current_component($bp->flickr->slug)&&$bp->current_action=="my-flickr")
             return true;
     return false;
 }
 
 function bp_flickr_is_settings(){
     global $bp;
-    if($bp->current_component==$bp->flickr->slug&&$bp->current_action=="settings")
+    if(bp_is_current_component($bp->flickr->slug)&&$bp->current_action=="settings")
             return true;
     return false;
 }
