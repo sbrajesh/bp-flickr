@@ -1,4 +1,4 @@
-<?php get_header() ?>
+<?php get_header('buddypress') ?>
 
 	<div id="content">
 		<div class="padder">
@@ -43,4 +43,4 @@
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 
-<?php get_footer() ?>
+<?php get_footer('buddypress') ?>

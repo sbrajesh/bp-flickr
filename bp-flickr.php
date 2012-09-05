@@ -5,10 +5,10 @@
  * Plugin URI:http://buddydev.com/plugins/bp-flickr/
  * Author URI:http://buddydev.com/members/sbrajesh
  * Description: allow users to show their latest flickr images on their profile
- * Version: 1.1.2
- * Tested with WordPress 3.2.1+buddypress 1.5 beta3
+ * Version: 1.1.3
+ * Tested with WordPress 3.4.1+BuddyPress 1.6.1
  * License: GPL
- * last Update:September 3, 2011
+ * last Update:September 4, 2012
  * 
  */
 
@@ -46,6 +46,7 @@ add_action ( 'bp_init', 'bp_flickr_load_textdomain', 2 );
 
 function bp_flickr_setup_globals(){
     global $bp;
+    $bp->flickr=new stdClass();//fix php 5.4 warning
     $bp->flickr->id="flickr";
     $bp->flickr->slug=BP_FLICKR_SLUG;
     $bp->active_components[$bp->flickr->slug] = $bp->flickr->id;
@@ -62,7 +63,7 @@ function bp_flickr_setup_nav(){
 
 
  }
- bp_core_new_nav_item( array( 'name' =>  sprintf( __( 'Flickr', 'bp-flickr' )), 'slug' => $bp->flickr->slug, 'position' => 180, 'screen_function' => 'bp_flickr_screen_home', 'default_subnav_slug' => 'my-flickr', 'item_css_id' => $bp->flickr->id ) );
+ bp_core_new_nav_item( array( 'name' =>  sprintf( __( 'Flickr', 'bp-flickr' )), 'slug' => $bp->flickr->slug, 'position' => 90, 'screen_function' => 'bp_flickr_screen_home', 'default_subnav_slug' => 'my-flickr', 'item_css_id' => $bp->flickr->id ) );
      $flickr_link = $bp->loggedin_user->domain . $bp->flickr->slug . '/';
 
     /* Add the subnav items to the gallery nav item */
@@ -114,7 +115,7 @@ bp_core_load_template(apply_filters('template_flickr_settings','flickr/index'));
 function bp_flickr_get_user_account($user_id=null){
     global $bp;
     if(empty($user_id))
-        $user_id=$bp->displayed_user->id;
+        $user_id=  bp_displayed_user_id();
     return get_user_meta($user_id,"flickr_account",true);
 }
 
